@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flash Anzan</title>
+    <link rel="stylesheet" href="index.css">
+    <script type="text/javascript" src="http://www.openjs.com/scripts/events/keyboard_shortcuts/shortcut.js"></script>
+</head>
+<body>
+<div class="calculate-area">
+    <div id="answer-title" class="font display-none">答え：</div>
+    <div id="question-number-area" class="number-area"></div>
+</div>
+<hr>
+<div id="play-button-area" class="operation-panel">
+    <button id="start-button" class="btn-gradient-3d btn-orange font button" onclick="flash()">
+        Start
+    </button>
+    <button id="answer-button" class="btn-gradient-3d btn-orange font button" onclick="displayAnswer()" disabled>
+        Answer
+    </button>
+    <button id="repeat-button" class="btn-gradient-3d btn-orange font button" onclick="flash({repeat: true})" disabled>
+        Repeat
+    </button>
+</div>
+<hr>
+<div id="mode-button-area" class="operation-panel">
+    <button id="addition-button" class="btn-gradient-3d btn-blue font button btn-blue-active"
+            onclick="changeMode((this.id).split('-')[0]);">たし算
+    </button>
+    <button id="subtraction-button" class="btn-gradient-3d btn-blue font button"
+            onclick="changeMode((this.id).split('-')[0]);" disabled>ひき算（加減算）
+    </button>
+    <button id="multiplication-button" class="btn-gradient-3d btn-blue font button"
+            onclick="changeMode((this.id).split('-')[0]);">かけ算
+    </button>
+</div>
+<hr>
+<div id="current-mode" class="display-none"></div>
+<div id="mode-config-area">
+    <div id="addition-mode-config">
+        <div class="operation-panel">
+            <div class="font">[基本設定]</div>
+            <div class="config-block float-left">
+                <div class="label-area font"><label for="addition-digit">桁数</label></div>
+                <div class="input-area">
+                    <input id="addition-digit" class="input-box disable-config-target" type="number"><span class="font"> 桁</span>
+                </div>
+            </div>
+            <div class="config-block float-left">
+                <div class="label-area font"><label for="addition-length">口数</label></div>
+                <div class="input-area">
+                    <input id="addition-length" class="input-box disable-config-target" type="number"><span
+                        class="font"> 口</span>
+                </div>
+            </div>
+            <div class="config-block">
+                <div class="label-area font"><label for="addition-time">秒数</label></div>
+                <div class="input-area">
+                    <input id="addition-time" class="input-box" type="number"><span class="font"> 秒</span>
+                </div>
+            </div>
+        </div>
+        <div class="operation-panel" style="display: none;">
+            <div class="font">[高度な設定]</div>
+            <div class="config-block">
+                <div class="label-area font"><label for="addition-flashrate">Flash rate</label>
+                </div>
+                <div class="input-area">
+                    <input id="addition-flashrate" class="input-box" type="number"><span class="font"> ％</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="multiplication-mode-config">
+        <div class="operation-panel">
+            <div class="font">[基本設定]</div>
+            <div class="config-block float-left">
+                <div class="label-area font"><label for="multiplication-digit-1">かけられる数</label></div>
+                <div class="input-area">
+                    <input id="multiplication-digit-1" class="input-box disable-config-target" type="number"><span
+                        class="font"> 桁 ×</span>
+                </div>
+            </div>
+            <div class="config-block float-left">
+                <div class="label-area font"><label for="multiplication-digit-2">かける数</label></div>
+                <div class="input-area">
+                    <input id="multiplication-digit-2" class="input-box disable-config-target" type="number"><span
+                        class="font"> 桁</span>
+                </div>
+            </div>
+            <div class="config-block float-left">
+                <div class="label-area font"><label for="multiplication-length">口数</label></div>
+                <div class="input-area">
+                    <input id="multiplication-length" class="input-box disable-config-target" type="number"><span
+                        class="font"> 口</span>
+                </div>
+            </div>
+            <div class="config-block">
+                <div class="label-area font"><label for="multiplication-time">秒数</label></div>
+                <div class="input-area">
+                    <input id="multiplication-time" class="input-box" type="number"><span class="font"> 秒</span>
+                </div>
+            </div>
+        </div>
+        <div class="operation-panel" style="display: none;">
+            <div class="font">[高度な設定]</div>
+            <div class="config-block">
+                <div class="label-area font"><label for="multiplication-flashrate">Flash rate</label>
+                </div>
+                <div class="input-area">
+                    <input id="multiplication-flashrate" class="input-box" type="number"><span class="font"> ％</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div id="result-section" class="operation-panel font display-none">
+    <p id="previous-mode" style="display: none;"></p>
+    <p id="answer-area" style="display: none;">Answer: <span id="answer-number"></span></p>
+    <button id="number-history-button" class="btn-gradient-3d btn-blue"
+            onclick="displayNumberHistoryArea()">Number History
+    </button>
+    <p id="number-history-area" class="display-none"><span id="number-history-display"></span></p>
+    <p id="number-history-stringify" style="display: none;"></p>
+</div>
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
