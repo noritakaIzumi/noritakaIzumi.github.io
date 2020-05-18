@@ -65,9 +65,10 @@ answerNumber = document.getElementById("answer-number");
 numberHistoryArea = document.getElementById("number-history-area");
 
 soundDirectory = "./sound";
-beepSoundUrl = soundDirectory + "/beep.wav";
-tickSoundUrl = soundDirectory + "/tick.wav";
-answerSoundUrl = soundDirectory + "/answer.wav";
+soundNameExtension = ".ogg";
+beepSoundUrl = soundDirectory + "/beep" + soundNameExtension;
+tickSoundUrl = soundDirectory + "/tick" + soundNameExtension;
+answerSoundUrl = soundDirectory + "/answer" + soundNameExtension;
 
 currentMode = document.getElementById("current-mode");
 
