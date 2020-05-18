@@ -99,6 +99,11 @@ multiplicationButton = document.getElementById("multiplication-button");
     new Audio(beepSoundUrl).load();
     new Audio(tickSoundUrl).load();
     new Audio(answerSoundUrl).load();
+    // フォントの読み込みに時間がかかるため，ウォーミングアップで 1 回見えない文字を光らせておく
+    setTimeout(() => numberArea.style.color = "black", 25);
+    setTimeout(() => numberArea.innerText = "0", 50);
+    setTimeout(() => numberArea.innerText = "", 75);
+    setTimeout(() => numberArea.style.color = "limegreen", 100);
 })();
 
 function fixValue(limit, targetValue) {
@@ -423,11 +428,6 @@ function flash(config = {}) {
     setTimeout(disableButtons, 0);
     setTimeout(playBeepFunctions[0], offset);
     setTimeout(playBeepFunctions[1], offset + beepInterval);
-    // 1 回目の表示が遅延することがあるので，ウォーミングアップで 1 回見えない文字を光らせておく
-    setTimeout(() => numberArea.style.color = "black", flashStartTiming - 100);
-    setTimeout(() => numberArea.innerText = "0", flashStartTiming - 75);
-    setTimeout(() => numberArea.innerText = "", flashStartTiming - 50);
-    setTimeout(() => numberArea.style.color = "limegreen", flashStartTiming - 25);
     let toggleTiming = flashStartTiming;
     for (let i = 0; i < toggleNumberSuite.length; i++) {
         setTimeout(toggleNumberFunctions[i], toggleTiming);
