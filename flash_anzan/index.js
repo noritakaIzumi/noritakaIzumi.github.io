@@ -94,6 +94,13 @@ additionButton = document.getElementById("addition-button");
 subtractionButton = document.getElementById("subtraction-button");
 multiplicationButton = document.getElementById("multiplication-button");
 
+(() => {
+    // 先に音源を読み込む経験を積めば，ページ表示後最初から快適にプレイできるかもしれない．
+    new Audio(beepSoundUrl).load();
+    new Audio(tickSoundUrl).load();
+    new Audio(answerSoundUrl).load();
+})();
+
 function fixValue(limit, targetValue) {
     return Math.floor(Math.min(limit.upper, Math.max(limit.lower, targetValue)));
 }
